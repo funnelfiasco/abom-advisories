@@ -1,7 +1,37 @@
 {
   "schema_version": "1.0.0",
-  "last_updated": "2026-03-26T00:00:00Z",
+  "last_updated": "2026-04-02T16:00:00Z",
   "advisories": [
+    { "id": "ABOM-2026-002",
+      "title": "tj-actions/changed-files compromise",
+      "cve": "CVE-2025-30066",
+      "cvss": 8.6,
+      "published": "2026-04-02",
+      "status": "active",
+      "description": "Allows for information disclosure of secrets including, but not limited to, valid access keys, GitHub Personal Access Tokens (PATs), npm tokens, and private RSA keys.",
+      "references": [
+        "https://www.cisa.gov/news-events/alerts/2025/03/18/supply-chain-compromise-third-party-tj-actionschanged-files-cve-2025-30066-and-reviewdogaction"
+      ],
+      "affected_actions": [
+        {
+          "uses": "tj-actions/changed-files",
+          "affected_refs": {
+            "tag_range": ">=v0.0.1 <=v45",
+            "safe_tags": ["v46.0.1"],
+            "safe_shas": []
+          },
+          "affected_period": {
+            "from": "2025-03-14T00:00:00Z",
+            "to": "2025-03-16T00:00:00Z"
+          }
+        }
+      ],
+      "recommended_actions": [
+        "Pin to commit SHA or update to safe tag (changed-files v46.0.1)",
+        "Rotate all secrets accessible to affected CI pipelines immediately",
+        "Audit downstream artifacts built during the exposure window"
+      ]
+    },
     {
       "id": "ABOM-2026-001",
       "title": "Trivy GitHub Actions supply chain compromise",
