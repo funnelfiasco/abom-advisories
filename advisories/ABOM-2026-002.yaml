@@ -1,0 +1,42 @@
+schema_version: "1.7.5"
+id: ABOM-2026-002
+modified: "2026-04-11T00:00:00Z"
+published: "2026-04-11T00:00:00Z"
+aliases:
+  - CVE-2025-30066
+  - GHSA-mrrh-fwg8-r2c3
+summary: tj-actions/changed-files compromise
+details: >-
+  Allows for information disclosure of secrets including, but not limited to,
+  valid access keys, GitHub Personal Access Tokens (PATs), npm tokens, and
+  private RSA keys.
+severity:
+  - type: CVSS_V3
+    score: "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:N"
+affected:
+  - package:
+      ecosystem: GitHub Actions
+      name: tj-actions/changed-files
+    ranges:
+      - type: ECOSYSTEM
+        events:
+          - introduced: v0.0.1
+          - fixed: v46.0.1
+    ecosystem_specific:
+      abom:
+        affected_period:
+          from: "2025-03-14T00:00:00Z"
+          to: "2025-03-16T00:00:00Z"
+references:
+  - type: ADVISORY
+    url: "https://www.cisa.gov/news-events/alerts/2025/03/18/supply-chain-compromise-third-party-tj-actionschanged-files-cve-2025-30066-and-reviewdogaction"
+  - type: ADVISORY
+    url: "https://github.com/advisories/GHSA-mrrh-fwg8-r2c3"
+  - type: ADVISORY
+    url: "https://nvd.nist.gov/vuln/detail/CVE-2025-30066"
+database_specific:
+  abom:
+    recommended_actions:
+      - Pin to commit SHA or update to safe tag (changed-files v46.0.1)
+      - Rotate all secrets accessible to affected CI pipelines immediately
+      - Audit downstream artifacts built during the exposure window
