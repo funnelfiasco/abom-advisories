@@ -13,12 +13,14 @@ The database is fetched automatically — no configuration needed. If the fetch 
 | ID | CVE | Description |
 |----|-----|-------------|
 | ABOM-2026-001 | CVE-2026-33634 | Trivy GitHub Actions supply chain compromise |
+| ABOM-2026-002 | CVE-2025-30066 | tj-actions/changed-files compromise |
 
 ## Contributing
 
 Anyone can submit a PR to add a new advisory. Your PR must:
 
-- Follow the schema in `db/advisories.json`
+- Conform to the OSV schema plus ABOM extensions
+- Use a unique `id` in the form `ABOM-YYYY-NNNN`
 - Include at least one reference to a public advisory or CVE
 - Clearly describe what was compromised and when
 
@@ -26,7 +28,10 @@ Maintainers review and merge. No auto-merge — we're the editorial layer ensuri
 
 ## Advisory format
 
-See the [abom documentation](https://github.com/JulietSecurity/abom) for the full schema specification.
+Advisories use the [OSV schema](https://ossf.github.io/osv-schema/) (v1.7.5). ABOM-specific fields live in two extension namespaces:
+
+- `ecosystem_specific.abom` for GitHub-Actions-specific signal (`tool_names` for wrapper detection, `affected_period` for incident time windows)
+- `database_specific.abom` for ABOM-wide signal (`indicators` for IoC data, `recommended_actions` for remediation steps)
 
 ## License
 
