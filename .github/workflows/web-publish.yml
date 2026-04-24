@@ -40,7 +40,7 @@ jobs:
       - name: Generate ABOM
         run: |
           go install github.com/julietsecurity/abom@v0.2.1
-          abom scan . -o cyclonedx-json -f docs/advisory-abom.cyclonedx.json
+          abom scan . --resolve-refs -o cyclonedx-json -f docs/advisory-abom.cyclonedx.json
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@44a6e6beabd48582f863aeeb6cb2151cc1716697 # v1.0.13
         with:
