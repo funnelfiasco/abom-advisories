@@ -10,10 +10,7 @@ The database is fetched automatically — no configuration needed. If the fetch 
 
 ## Current advisories
 
-| ID | CVE | Description |
-|----|-----|-------------|
-| ABOM-2026-001 | CVE-2026-33634 | Trivy GitHub Actions supply chain compromise |
-| ABOM-2026-002 | CVE-2025-30066 | tj-actions/changed-files compromise |
+See [julietsecurity.github.io/abom-advisories/db/advisories.json](https://julietsecurity.github.io/abom-advisories/db/advisories.json) for the current list.
 
 ## Contributing
 
