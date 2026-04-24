@@ -28,10 +28,19 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
             persist-credentials: false
+      - name: Setup Go
+        uses: actions/setup-go@4a3601121dd01d1626a1e23e37211e3254c1c06c # v6.4.0
+        with:
+            go-version: '1.26'
+            cache: false
       - name: Setup Pages
         uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
       - name: Build content from yaml
         run:  go run . compile --output-directory docs/db
+      - name: Generate ABOM
+        run: |
+          go install github.com/julietsecurity/abom@v0.2.1
+          abom scan . -o cyclonedx-json -f docs/advisory-abom.cyclonedx.json
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@44a6e6beabd48582f863aeeb6cb2151cc1716697 # v1.0.13
         with:
